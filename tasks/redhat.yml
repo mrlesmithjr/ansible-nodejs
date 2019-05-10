@@ -1,28 +1,31 @@
 ---
 - name: redhat | Installing NodeJS (Fedora)
   dnf:
-    name: "nodejs"
-    state: "present"
+    name: nodejs
+    state: present
   become: true
+  register: result
+  until: result is successful
   when: ansible_distribution == "Fedora"
 
 - name: redhat | Enabling EPEL Repo (!=Fedora)
   yum:
-    name: "epel-release"
-    state: "present"
+    name: epel-release
+    state: present
   become: true
+  register: result
+  until: result is successful
   when: >
-        ansible_os_family == "RedHat" and
-        ansible_distribution != "Fedora"
+    ansible_os_family == "RedHat" and
+    ansible_distribution != "Fedora"
 
 - name: redhat | Installing NodeJS (!=Fedora)
   yum:
-    name: "{{ item }}"
-    state: "present"
+    name: "{{ nodejs_redhat_packages }}"
+    state: present
   become: true
-  with_items:
-    - 'nodejs'
-    - 'npm'
+  register: result
+  until: result is successful
   when: >
-        ansible_os_family == "RedHat" and
-        ansible_distribution != "Fedora"
+    ansible_os_family == "RedHat" and
+    ansible_distribution != "Fedora"
