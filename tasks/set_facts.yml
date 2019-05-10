@@ -1,0 +1,22 @@
+---
+- name: set_facts | Defining NodeJS Version ({{ ansible_distribution }} {{ ansible_distribution_version }})
+  set_fact:
+    nodejs_version: 8.x
+  when: >
+    ansible_os_family == "RedHat"
+
+- name: set_facts | Defining NodeJS Version ({{ ansible_distribution }} {{ ansible_distribution_version }})
+  set_fact:
+    nodejs_version: 6.x
+  when: >
+    ansible_distribution == "Ubuntu" and
+    ansible_distribution_version == "12.04"
+
+- name: set_facts | Defining NodeJS Version ({{ ansible_distribution }} {{ ansible_distribution_version }})
+  set_fact:
+    nodejs_version: 8.x
+  when: >
+    (ansible_distribution == "Ubuntu" and
+    ansible_distribution_version >= "14.04") or
+    (ansible_distribution == "Debian" and
+    ansible_distribution_version >= "8")

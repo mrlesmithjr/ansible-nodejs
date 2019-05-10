@@ -1,64 +1,36 @@
-Role Name
-=========
+# ansible-nodejs
 
-An [Ansible] role to install [NodeJS]
+An [Ansible](https://www.ansible.com) role to install [NodeJS](https://nodejs.org/en/)
 
-Requirements
-------------
+## Requirements
 
 None
 
-Role Variables
---------------
+## Role Variables
 
-```
----
-# defaults file for ansible-nodejs
-nodejs_debian_packages:
-  - 'build-essential'
-  - 'nodejs'
-nodejs_debian_repo_info:
-  id: '68576280'
-  repo_key: 'https://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x1655A0AB68576280'
-  repos:
-    - 'deb https://deb.nodesource.com/node_{{ nodejs_version }} {{ ansible_distribution_release|lower }} main'
-    - 'deb-src https://deb.nodesource.com/node_{{ nodejs_version }} {{ ansible_distribution_release|lower }} main'
+[defaults/main.yml](defaults/main.yml)
 
-# Defines nodejs version to install..( 6.x|7.x )
-# Ubuntu Precise needs to be 6.x
-nodejs_version: '7.x'
-```
-
-Dependencies
-------------
+## Dependencies
 
 None
 
-Example Playbook
-----------------
+## Example Playbook
 
-```
+```yaml
 ---
 - hosts: all
-  become: true
-  vars:
   roles:
     - role: ansible-nodejs
-  tasks:
 ```
 
-License
--------
+## License
 
-BSD
+MIT
 
-Author Information
-------------------
+## Author Information
 
 Larry Smith Jr.
-- @mrlesmithjr
-- http://everythingshouldbevirtual.com
-- mrlesmithjr [at] gmail.com
 
-[Ansible]: <https://www.ansible.com>
-[NodeJS]: <https://nodejs.org/en/>
+- [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
+- [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
+- [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com)

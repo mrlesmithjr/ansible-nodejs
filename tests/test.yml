@@ -1,6 +1,5 @@
 ---
 - hosts: localhost
-  remote_user: root
-  become: true
+  connection: local
   roles:
     - ansible-nodejs
