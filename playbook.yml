@@ -1,5 +1,7 @@
 ---
 - name: Example Playbook
   hosts: all
-  roles:
-    - role: ansible-nodejs
+  tasks:
+    - name: Include ansible-nodejs
+      include_role:
+        name: ansible-nodejs
