@@ -4,14 +4,14 @@
     nodejs_version: 10.x
   when:
     - ansible_os_family == "RedHat"
-    - ansible_distribution_version is version('6', '==')
+    - ansible_distribution_major_version is version('6', '==')
 
 - name: set_facts | Defining NodeJS Version - RedHat
   set_fact:
     nodejs_version: 12.x
   when:
     - ansible_os_family == "RedHat"
-    - ansible_distribution_version is version('6', '>')
+    - ansible_distribution_major_version is version('6', '>')
 
 - name: set_facts | Defining NodeJS Version - Ubuntu
   set_fact:
@@ -39,11 +39,11 @@
     nodejs_version: 8.x
   when:
     - ansible_distribution == "Debian"
-    - ansible_distribution_version is version('8', '==')
+    - ansible_distribution_major_version is version('8', '==')
 
 - name: set_facts | Defining NodeJS Version - Debian
   set_fact:
     nodejs_version: 12.x
   when:
     - ansible_distribution == "Debian"
-    - ansible_distribution_version is version('9', '>=')
+    - ansible_distribution_major_version is version('9', '>=')
